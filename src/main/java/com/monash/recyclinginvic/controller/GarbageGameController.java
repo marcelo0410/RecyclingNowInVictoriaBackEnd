@@ -12,4 +12,10 @@ public class GarbageGameController {
     public String hello1(){
         return "Hello world!";
     }
+
+    @GetMapping("/hello2")
+    public String hello2(){
+        return "Hello world!";
+    }
 }
+
