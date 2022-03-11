@@ -1,5 +1,7 @@
 package com.monash.recyclinginvic.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.monash.recyclinginvic.mapper.GarbageGenreMapper;
 import com.monash.recyclinginvic.model.GarbageGenre;
 import com.monash.recyclinginvic.service.GarbageGenreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +11,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = {"http://localhost:3000", "https://recycling-now-in-victoria.herokuapp.com/"})
+@CrossOrigin(origins = {"http://localhost:3000", "https://recycling-now-in-victoria.herokuapp.com/", "http://www.recyclenowinvictoria.ml"})
 @RestController
 //@ResponseBody
-@RequestMapping("v1/gg")
+@RequestMapping("v1/api")
 public class GarbageGameController {
 
     @Autowired
     private GarbageGenreService garbageGenreService;
+
+
 
     @GetMapping("/hello")
     public String hello1(){
@@ -41,6 +45,16 @@ public class GarbageGameController {
         //调用service的方法
         List<GarbageGenre> list = garbageGenreService.list();
         return list;
+    }
+
+    // search a keyword
+    @GetMapping("/search/{name}")
+    public List<GarbageGenre> searchKeyWord(@PathVariable String name){
+        QueryWrapper<GarbageGenre> wrapper = new QueryWrapper<>();
+        wrapper.like("name", name);
+        List<GarbageGenre> garbageGenres = garbageGenreService.getBaseMapper().selectList(wrapper);
+        return garbageGenres;
+
     }
 }
 

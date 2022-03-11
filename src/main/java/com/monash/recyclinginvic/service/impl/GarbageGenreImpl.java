@@ -8,4 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GarbageGenreImpl extends ServiceImpl<GarbageGenreMapper, GarbageGenre> implements GarbageGenreService {
+    public GarbageGenreMapper getMapper(){
+        return this.baseMapper;
+    }
 }
