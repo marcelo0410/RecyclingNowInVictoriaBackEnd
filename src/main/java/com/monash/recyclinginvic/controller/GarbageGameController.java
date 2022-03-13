@@ -13,14 +13,11 @@ import java.util.Map;
 
 @CrossOrigin(origins = {"http://localhost:3000", "https://recycling-now-in-victoria.herokuapp.com/", "http://www.recyclenowinvictoria.ml"})
 @RestController
-//@ResponseBody
 @RequestMapping("v1/api")
 public class GarbageGameController {
 
     @Autowired
     private GarbageGenreService garbageGenreService;
-
-
 
     @GetMapping("/hello")
     public String hello1(){
@@ -48,13 +45,12 @@ public class GarbageGameController {
     }
 
     // search a keyword
-    @GetMapping("/search/{name}")
-    public List<GarbageGenre> searchKeyWord(@PathVariable String name){
-        QueryWrapper<GarbageGenre> wrapper = new QueryWrapper<>();
-        wrapper.like("name", name);
-        List<GarbageGenre> garbageGenres = garbageGenreService.getBaseMapper().selectList(wrapper);
-        return garbageGenres;
-
-    }
+//    @GetMapping("/search/{name}")
+//    public List<GarbageGenre> searchKeyWord(@PathVariable String name){
+//        QueryWrapper<GarbageGenre> wrapper = new QueryWrapper<>();
+//        wrapper.like("name", name);
+//        List<GarbageGenre> garbageGenres = garbageGenreService.getBaseMapper().selectList(wrapper);
+//        return garbageGenres;
+//    }
 }
 
