@@ -29,7 +29,7 @@ public class CouncilDataController {
         CouncilData councilData = new CouncilData();
         councilData.setCouncilId(id);
         QueryWrapper<CouncilData> queryWrapper = new QueryWrapper<>(councilData);
-        queryWrapper.orderByDesc("year");
+        queryWrapper.orderByAsc("year");
         List<CouncilData> councilData1 = councilDataService.getBaseMapper().selectList(queryWrapper);
         return councilData1;
     }
