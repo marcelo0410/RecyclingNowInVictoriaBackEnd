@@ -15,7 +15,7 @@ public class CouncilData {
     private Integer garbageCollected;
     @TableField(value = "rcc_collected")
     private Integer recycleCollected;
-    @TableField(value = "rcc_peocessed")
+    @TableField(value = "rcc_processed")
     private Integer recycleProcessed;
     @TableField(value = "ogn_collected")
     private Integer organicCollected;
